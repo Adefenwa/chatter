@@ -68,6 +68,8 @@ export default async function HomePage() {
               <Image
                 src="https://i.pravatar.cc/32"
                 alt="avatar"
+                width={32}
+                height={32}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -145,6 +147,8 @@ export default async function HomePage() {
                     <Image
                       src={post.cover_image}
                       alt={post.title}
+                      width={600}
+                      height={240}
                       className="w-full h-48 object-cover"
                     />
                     <span className="absolute top-3 left-3 bg-blue-600 text-white text-xs font-semibold px-2 py-0.5 rounded-md uppercase tracking-wide">
@@ -166,6 +170,8 @@ export default async function HomePage() {
                         `https://i.pravatar.cc/32?u=${post.author?.username}`
                       }
                       alt={post.author?.full_name}
+                      width={24}
+                      height={24}
                       className="w-6 h-6 rounded-full"
                     />
                     <span className="text-xs text-white/50">
@@ -223,6 +229,8 @@ export default async function HomePage() {
                   <Image
                     src={`https://i.pravatar.cc/32?u=${author.name}`}
                     alt={author.name}
+                    width={32}
+                    height={32}
                     className="w-8 h-8 rounded-full shrink-0"
                   />
                   <div className="flex-1 min-w-0">
