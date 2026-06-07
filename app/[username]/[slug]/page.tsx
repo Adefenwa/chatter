@@ -51,12 +51,12 @@ export default async function PostPage({ params }: Props) {
 
   // Fetch recommended posts
   const { data: recommendedPosts } = await supabase
-    .from("posts")
-    .select("title, slug, author:profiles(username)")
-    .eq("status", "published")
-    .neq("id", post.id)
-    .limit(4);
-
+  .from('posts')
+  .select('title, slug, author:profiles!posts_author_id_fkey(username)')
+  .eq('status', 'published')
+  .neq('id', post.id)
+  .limit(4)
+  
   // Fetch initial comments server-side
   const { data: initialComments } = await supabase
     .from("comments")
@@ -217,7 +217,7 @@ export default async function PostPage({ params }: Props) {
               {recommendedPosts?.map((rec) => (
                 <Link
                   key={rec.slug}
-                  href={`/${rec.author?.username}/${rec.slug}`}
+                  href={`/${(rec.author as { username: string })?.username}/${rec.slug}`}
                   className="group"
                 >
                   <p className="text-sm font-semibold text-white/80 group-hover:text-blue-400 transition leading-snug">
