@@ -74,7 +74,7 @@ export default async function PostPage({ params }: Props) {
   return (
     <div className="min-h-screen bg-[#0f172a]">
       {/* Navbar */}
-      <header className="sticky top-0 z-50 bg-[#0f172a] border-b border-white/10 px-6 py-3">
+      {/* <header className="sticky top-0 z-50 bg-[#0f172a] border-b border-white/10 px-6 py-3">
         <div className="max-w-7xl mx-auto flex items-center gap-6">
           <Link href="/" className="text-xl font-bold text-white">
             Chatter
@@ -114,7 +114,7 @@ export default async function PostPage({ params }: Props) {
             </Link>
           </div>
         </div>
-      </header>
+      </header> */}
 
       {/* Hero Image */}
       {post.cover_image && (
@@ -252,7 +252,7 @@ export default async function PostPage({ params }: Props) {
       </footer>
 
       {/* Mobile Bottom Nav */}
-      <nav className="fixed bottom-0 left-0 right-0 lg:hidden bg-[#0f172a] border-t border-white/10 flex items-center justify-around py-3">
+      {/* <nav className="fixed bottom-0 left-0 right-0 lg:hidden bg-[#0f172a] border-t border-white/10 flex items-center justify-around py-3">
         {[
           { label: "Home", icon: "🏠", href: "/" },
           { label: "Explore", icon: "🔍", href: "/explore" },
@@ -268,7 +268,7 @@ export default async function PostPage({ params }: Props) {
             <span className="text-xs">{item.label}</span>
           </Link>
         ))}
-      </nav>
+      </nav> */}
     </div>
   );
 }

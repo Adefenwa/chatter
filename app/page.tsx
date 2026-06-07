@@ -39,7 +39,7 @@ export default async function HomePage() {
             />
           </div>
 
-          <nav className="hidden md:flex items-center gap-10 ml-auto">
+          {/* <nav className="hidden md:flex items-center gap-10 ml-auto">
             <Link
               href="/explore"
               className="text-sm text-white/70 hover:text-white font-bold transition"
@@ -52,7 +52,7 @@ export default async function HomePage() {
             >
               Bookmarks
             </Link>
-          </nav>
+          </nav> */}
 
           <div className="flex items-center gap-7 ml-auto md:ml-0">
             <Link
@@ -275,7 +275,7 @@ export default async function HomePage() {
       </div>
 
       {/* Mobile Bottom Nav */}
-      <nav className="fixed bottom-0 left-0 right-0 lg:hidden bg-[#0f172a] border-t border-white/10 flex items-center justify-around py-3 px-4">
+      {/* <nav className="fixed bottom-0 left-0 right-0 lg:hidden bg-[#0f172a] border-t border-white/10 flex items-center justify-around py-3 px-4">
         {[
           { label: "Home", href: "/", icon: <House strokeWidth={1.5} /> },
           {
@@ -308,7 +308,7 @@ export default async function HomePage() {
             {item.label}
           </Link>
         ))}
-      </nav>
+      </nav> */}
     </div>
   );
 }
