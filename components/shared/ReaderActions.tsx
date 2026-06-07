@@ -1,24 +1,18 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 
-export default function ReaderActions({ postId }: { postId: string }) {
+type Props = {
+  postId: string;
+  initialLikeCount: number;
+};
+
+export default function ReaderActions({ postId, initialLikeCount }: Props) {
   const [liked, setLiked] = useState(false);
   const [bookmarked, setBookmarked] = useState(false);
-  const [likeCount, setLikeCount] = useState(0);
+  const [likeCount, setLikeCount] = useState(initialLikeCount);
   const supabase = createClient();
-
-  useEffect(() => {
-    const fetchCounts = async () => {
-      const { count } = await supabase
-        .from("likes")
-        .select("*", { count: "exact" })
-        .eq("post_id", postId);
-      setLikeCount(count || 0);
-    };
-    fetchCounts();
-  }, [postId, supabase]);
 
   const handleLike = async () => {
     const {
@@ -66,21 +60,21 @@ export default function ReaderActions({ postId }: { postId: string }) {
     <div className="flex flex-col items-center gap-4">
       <button
         onClick={handleLike}
-        className="flex flex-col items-center gap-1 text-gray-400 hover:text-red-500 transition"
+        className="flex flex-col items-center gap-1 text-white/30 hover:text-red-400 transition"
       >
-        <span className={`text-xl ${liked ? "text-red-500" : ""}`}>♥</span>
+        <span className={`text-xl ${liked ? "text-red-400" : ""}`}>♥</span>
         <span className="text-xs">{likeCount}</span>
       </button>
-      <button className="text-gray-400 hover:text-gray-700 transition">
+      <button className="text-white/30 hover:text-white/70 transition">
         <span className="text-xl">💬</span>
       </button>
       <button
         onClick={handleBookmark}
-        className={`text-xl transition ${bookmarked ? "text-blue-500" : "text-gray-400 hover:text-blue-500"}`}
+        className={`text-xl transition ${bookmarked ? "text-blue-400" : "text-white/30 hover:text-blue-400"}`}
       >
         🔖
       </button>
-      <button className="text-gray-400 hover:text-gray-700 transition text-xl">
+      <button className="text-white/30 hover:text-white/70 transition text-xl">
         ↗️
       </button>
     </div>
