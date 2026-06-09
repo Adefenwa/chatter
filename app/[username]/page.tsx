@@ -2,6 +2,7 @@ import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import ProfileTabs from "@/components/shared/ProfileTabs";
+import FollowButton from "@/components/shared/FollowButton";
 
 type Props = {
   params: Promise<{ username: string }>;
@@ -46,6 +47,22 @@ export default async function ProfilePage({ params }: Props) {
     .from("follows")
     .select("*", { count: "exact" })
     .eq("follower_id", profile.id);
+
+  // Check if current user is following this profile
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  const { data: followData } = user
+    ? await supabase
+        .from("follows")
+        .select("*")
+        .eq("follower_id", user.id)
+        .eq("following_id", profile.id)
+        .single()
+    : { data: null };
+
+  const isFollowing = !!followData;
 
   return (
     <div className="min-h-screen bg-[#0f172a]">
@@ -118,9 +135,11 @@ export default async function ProfilePage({ params }: Props) {
                 </p>
               </div>
               <div className="flex items-center gap-2 shrink-0">
-                <button className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-5 py-2 rounded-lg transition">
-                  Follow
-                </button>
+                <FollowButton
+                  profileId={profile.id}
+                  currentUserId={user?.id || null}
+                  initialFollowing={isFollowing}
+                />
                 <button className="border border-white/20 text-white/70 hover:bg-white/10 text-sm font-medium px-5 py-2 rounded-lg transition">
                   Message
                 </button>
