@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import Image from "next/image";
+import { Camera, NotebookText, Timer, Trash2 } from "lucide-react";
 
 const MDEditor = dynamic(() => import("@uiw/react-md-editor"), { ssr: false });
 
@@ -135,10 +136,6 @@ export default function WritePage() {
     <div className="min-h-screen bg-[#0f172a] flex flex-col">
       {/* Navbar */}
       <header className="sticky top-0 z-50 bg-[#0f172a] border-b border-white/10 px-6 py-3 flex items-center gap-4">
-        <Link href="/" className="text-xl font-bold text-white shrink-0">
-          Chatter
-        </Link>
-        <div className="w-px h-6 bg-white/10" />
         <div className="flex flex-col">
           <input
             type="text"
@@ -160,12 +157,12 @@ export default function WritePage() {
         </div>
 
         <div className="ml-auto flex items-center gap-3">
-          <button className="text-white/30 hover:text-white transition">
+          {/* <button className="text-white/30 hover:text-white transition">
             ⬇️
           </button>
           <button className="text-white/30 hover:text-white transition">
             ⚙️
-          </button>
+          </button> */}
           <button
             onClick={() => savePost("draft")}
             className="border border-white/20 text-white/70 text-sm font-medium px-4 py-1.5 rounded-lg hover:bg-white/10 transition"
@@ -232,14 +229,15 @@ export default function WritePage() {
                 />
               ) : (
                 <div className="w-full h-32 border-2 border-dashed border-white/10 rounded-xl flex flex-col items-center justify-center text-white/20 hover:border-white/30 transition">
-                  <span className="text-2xl">📷</span>
+                  <span className="text-2xl">
+                    <Camera strokeWidth={1.5} />
+                  </span>
                   <span className="text-xs mt-1">Drag or Click to Upload</span>
                 </div>
               )}
             </label>
           </div>
 
-          {/* Tags */}
           <div>
             <p className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-2">
               Tags
@@ -281,40 +279,26 @@ export default function WritePage() {
             </div>
           </div>
 
-          {/* Settings Links */}
-          <div className="flex flex-col gap-2">
-            {[
-              { label: "Post Settings", icon: "⚙️" },
-              { label: "Metadata", icon: "📄" },
-              { label: "Visibility", icon: "👁️" },
-            ].map((item) => (
-              <button
-                key={item.label}
-                className="flex items-center gap-2 text-sm text-white/50 hover:text-white py-2 border-b border-white/10 transition"
-              >
-                {item.icon} {item.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Stats */}
           <div className="bg-white/5 border border-white/10 rounded-xl p-4 text-sm text-white/40 space-y-1">
-            <div className="flex items-center gap-2">
-              <span>🕐</span>
+            <div className="flex items-center gap-4">
+              <span>
+                <Timer strokeWidth={1.5} />{" "}
+              </span>
               <span>Est. Read Time: {readTime} min</span>
             </div>
-            <div className="flex items-center gap-2">
-              <span>📄</span>
+            <div className="flex items-center gap-4">
+              <span>
+                <NotebookText strokeWidth={1.5} />
+              </span>
               <span>Words: {wordCount}</span>
             </div>
           </div>
 
-          {/* Delete Draft */}
           <button
             onClick={handleDeleteDraft}
-            className="flex items-center gap-2 text-red-400 hover:text-red-300 text-sm mt-auto transition"
+            className="flex items-center gap-2 text-red-400 cursor-pointer hover:text-red-300 text-sm mt-auto transition"
           >
-            🗑️ Delete Draft
+            <Trash2 strokeWidth={1.5} /> Delete Draft
           </button>
         </aside>
       </div>

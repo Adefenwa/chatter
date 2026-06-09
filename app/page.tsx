@@ -23,14 +23,13 @@ export default async function HomePage() {
 
   return (
     <div className="min-h-screen bg-[#0f172a] text-white">
-      {/* Navbar */}
-      <header className="sticky top-0 z-50 bg-[#0f172a] border-b border-white/10 px-4 py-3">
+      {/* <header className="sticky top-0 z-50 bg-[#0f172a] border-b border-white/10 px-4 py-3">
         <div className="max-w-7xl mx-auto flex items-center gap-4">
           <Link href="/" className="text-xl font-bold text-white shrink-0">
             Chatter
           </Link>
 
-          {/* Search - hidden on mobile */}
+          
           <div className="hidden md:flex flex-1 max-w-md mx-auto">
             <input
               type="text"
@@ -39,7 +38,7 @@ export default async function HomePage() {
             />
           </div>
 
-          {/* <nav className="hidden md:flex items-center gap-10 ml-auto">
+          <nav className="hidden md:flex items-center gap-10 ml-auto">
             <Link
               href="/explore"
               className="text-sm text-white/70 hover:text-white font-bold transition"
@@ -52,7 +51,7 @@ export default async function HomePage() {
             >
               Bookmarks
             </Link>
-          </nav> */}
+          </nav>
 
           <div className="flex items-center gap-7 ml-auto md:ml-0">
             <Link
@@ -75,7 +74,7 @@ export default async function HomePage() {
             </div>
           </div>
         </div>
-      </header>
+      </header> */}
 
       {/* Main Layout */}
       <div className="max-w-7xl mx-auto px-4 py-6 flex gap-6">
