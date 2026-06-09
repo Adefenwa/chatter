@@ -2,7 +2,7 @@ import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import AnalyticsChart from "@/components/shared/AnalyticsChart";
-import { Bell, CircleQuestionMark, LogOut } from "lucide-react";
+import { Bell, CircleQuestionMark, LogOut, Plus } from "lucide-react";
 import LogoutButton from "@/components/shared/LogoutButton";
 
 export default async function DashboardPage() {
@@ -113,7 +113,7 @@ export default async function DashboardPage() {
         </div>
 
         <button className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 rounded-lg mb-6 transition">
-          ✏️ New Post
+          <Plus strokeWidth={1.5} /> New Post
         </button>
 
         {/* <nav className="flex flex-col gap-1 flex-1">
