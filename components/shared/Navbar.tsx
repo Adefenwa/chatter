@@ -35,13 +35,18 @@ export default async function Navbar() {
         </Link>
 
         {/* Search */}
-        <div className="hidden md:flex flex-1 max-w-md mx-auto">
+        <form
+          action="/explore"
+          method="get"
+          className="hidden md:flex flex-1 max-w-md mx-auto"
+        >
           <input
             type="text"
+            name="q"
             placeholder="Search Chatter..."
             className="w-full bg-white/10 text-white placeholder-white/40 text-sm px-4 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-        </div>
+        </form>
 
         <nav className="hidden md:flex items-center gap-4 ml-auto">
           <Link
