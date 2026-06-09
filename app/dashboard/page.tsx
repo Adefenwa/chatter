@@ -2,6 +2,8 @@ import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import AnalyticsChart from "@/components/shared/AnalyticsChart";
+import { Bell, CircleQuestionMark, LogOut } from "lucide-react";
+import LogoutButton from "@/components/shared/LogoutButton";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -144,11 +146,9 @@ export default async function DashboardPage() {
 
         <div className="mt-auto flex flex-col gap-1">
           <button className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-white/30 hover:text-white hover:bg-white/5 transition">
-            ❓ Help
+            <CircleQuestionMark strokeWidth={1.5} /> Help
           </button>
-          <button className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-white/30 hover:text-white hover:bg-white/5 transition">
-            ↩️ Logout
-          </button>
+          <LogoutButton className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-white/30 hover:text-white hover:bg-white/5 transition" />
           <div className="flex items-center gap-3 px-3 py-3 mt-2 border-t border-white/10">
             <img
               src={
@@ -192,7 +192,7 @@ export default async function DashboardPage() {
               className="hidden md:block bg-white/5 border border-white/10 text-white text-sm placeholder-white/20 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <button className="text-white/50 hover:text-white transition">
-              🔔
+              <Bell strokeWidth={1.5} />
             </button>
             <img
               src={

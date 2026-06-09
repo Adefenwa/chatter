@@ -162,7 +162,7 @@ export default async function ProfilePage({ params }: Props) {
                 </span>{" "}
                 Following
               </div>
-              <div className="flex items-center gap-3 ml-2">
+              {/* <div className="flex items-center gap-3 ml-2">
                 <button className="text-white/30 hover:text-white transition text-lg">
                   ↗️
                 </button>
@@ -179,7 +179,7 @@ export default async function ProfilePage({ params }: Props) {
                 <button className="text-white/30 hover:text-white transition text-lg">
                   @
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
