@@ -4,7 +4,11 @@ import { createClient } from "@/lib/supabase/client";
 import { LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-export default function LogoutButton() {
+interface LogoutButtonProps {
+  className?: string;
+}
+
+export default function LogoutButton({ className }: LogoutButtonProps) {
   const supabase = createClient();
   const router = useRouter();
 
@@ -17,7 +21,10 @@ export default function LogoutButton() {
   return (
     <button
       onClick={handleLogout}
-      className="flex items-center gap-3 px-3 py-2.5 cursor-pointer rounded-xl text-sm text-white/30 hover:text-white hover:bg-white/5 transition w-full"
+      className={
+        className ??
+        "flex items-center gap-3 px-3 py-2.5 cursor-pointer rounded-xl text-sm text-white/30 hover:text-white hover:bg-white/5 transition w-full"
+      }
     >
       <LogOut strokeWidth={1.5} /> Logout
     </button>
