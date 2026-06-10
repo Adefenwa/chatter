@@ -35,7 +35,6 @@ export default async function Navbar() {
           Chatter
         </Link>
 
-        {/* Search */}
         <form
           action="/explore"
           method="get"
@@ -89,9 +88,10 @@ export default async function Navbar() {
                     `https://i.pravatar.cc/32?u=${user.id}`
                   }
                   alt={profile?.full_name || "Profile"}
-                  className="w-8 h-8 rounded-full object-cover cursor-pointer hover:ring-2 hover:ring-blue-500 transition"
+                  className="w-22 rounded-full object-cover cursor-pointer hover:ring-2 hover:ring-blue-500 transition"
                 />
               </Link>
+              <LogoutButton />
             </>
           ) : (
             <>
@@ -108,30 +108,6 @@ export default async function Navbar() {
                 Get started
               </Link>
             </>
-          )}
-          {user && (
-            <div className="flex items-center gap-2">
-              <Link
-                href="/write"
-                className="flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-1.5 rounded-full transition"
-              >
-                <NotebookPen strokeWidth={1.5} /> Write
-              </Link>
-              <button className="text-white/70 hover:text-white transition">
-                < Bell strokeWidth={1.5} />
-              </button>
-              <Link href={`/${profile?.username}`}>
-                <img
-                  src={
-                    profile?.avatar_url ||
-                    `https://i.pravatar.cc/32?u=${user.id}`
-                  }
-                  alt={profile?.full_name || "Profile"}
-                  className="w-8 h-8 rounded-full object-cover cursor-pointer hover:ring-2 hover:ring-blue-500 transition"
-                />
-              </Link>
-              <LogoutButton />
-            </div>
           )}
         </div>
       </div>

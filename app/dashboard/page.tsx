@@ -116,33 +116,7 @@ export default async function DashboardPage() {
           <Plus strokeWidth={1.5} /> New Post
         </button>
 
-        {/* <nav className="flex flex-col gap-1 flex-1">
-          {[
-            { label: "Dashboard", icon: "⊞", href: "/dashboard" },
-            {
-              label: "Analytics",
-              icon: "📊",
-              href: "/dashboard",
-              active: true,
-            },
-            { label: "Articles", icon: "📄", href: "/write" },
-            { label: "Audience", icon: "👥", href: "/dashboard" },
-            { label: "Settings", icon: "⚙️", href: "/dashboard" },
-          ].map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition ${
-                item.active
-                  ? "bg-blue-600/20 text-blue-400"
-                  : "text-white/50 hover:bg-white/5 hover:text-white"
-              }`}
-            >
-              <span>{item.icon}</span>
-              {item.label}
-            </Link>
-          ))}
-        </nav> */}
+       
 
         <div className="mt-auto flex flex-col gap-1">
           <button className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-white/30 hover:text-white hover:bg-white/5 transition">
