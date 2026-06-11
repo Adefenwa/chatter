@@ -33,6 +33,7 @@ export default function RegisterPage() {
       return;
     }
     router.push("/");
+    router.refresh();
   };
 
   const handleGoogle = async () => {

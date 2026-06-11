@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 type Post = {
   id: string;
@@ -28,7 +29,7 @@ type Props = {
 
 const TABS = ["Published Posts", "Bookmarks", "Analytics"];
 
-export default function ProfileTabs({ posts, bookmarks, profileId }: Props) {
+export default function ProfileTabs({ posts, bookmarks }: Props) {
   const [activeTab, setActiveTab] = useState("Published Posts");
 
   return (
@@ -66,9 +67,11 @@ export default function ProfileTabs({ posts, bookmarks, profileId }: Props) {
             >
               {post.cover_image && (
                 <div className="relative">
-                  <img
+                  <Image
                     src={post.cover_image}
                     alt={post.title}
+                    width={400}
+                    height={160}
                     className="w-full h-40 object-cover"
                   />
                   <span className="absolute top-3 left-3 bg-blue-600 text-white text-xs font-semibold px-2 py-0.5 rounded-md uppercase tracking-wide">
@@ -116,9 +119,11 @@ export default function ProfileTabs({ posts, bookmarks, profileId }: Props) {
               className="group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition"
             >
               {bookmark.post?.cover_image && (
-                <img
+                <Image
                   src={bookmark.post.cover_image}
                   alt={bookmark.post.title}
+                  width={400}
+                  height={160}
                   className="w-full h-40 object-cover"
                 />
               )}
@@ -135,12 +140,17 @@ export default function ProfileTabs({ posts, bookmarks, profileId }: Props) {
         </div>
       )}
 
-      {/* Analytics */}
       {activeTab === "Analytics" && (
         <div className="text-center py-20">
-          <p className="text-white/30 text-sm">
-            Analytics dashboard coming soon.
+          <p className="text-white/30 text-sm mb-4">
+            View your full analytics dashboard
           </p>
+          <Link
+            href="/dashboard"
+            className="bg-blue-600 hover:bg-blue-700 text-white text-sm px-6 py-2 rounded-lg transition"
+          >
+            Go to Dashboard
+          </Link>
         </div>
       )}
     </div>

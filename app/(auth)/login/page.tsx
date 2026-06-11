@@ -26,6 +26,7 @@ export default function LoginPage() {
       return;
     }
     router.push("/");
+    router.refresh();
   };
 
   const handleGoogle = async () => {
@@ -128,7 +129,7 @@ export default function LoginPage() {
         </button>
 
         <p className="text-center text-sm text-gray-500 mt-6">
-          Don't have an account?{" "}
+          Don`&apos;`t have an account?{" "}
           <Link
             href="/register"
             className="text-blue-600 font-medium hover:underline"

@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import Image from "next/image";
 import Link from "next/link";
 
 type Props = {
@@ -28,7 +29,6 @@ export default async function ExplorePage({ searchParams }: Props) {
   return (
     <div className="min-h-screen bg-[#0f172a]">
       <div className="max-w-5xl mx-auto px-4 py-10">
-        {/* Search Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-white mb-4">Explore</h1>
           <form>
@@ -42,7 +42,6 @@ export default async function ExplorePage({ searchParams }: Props) {
           </form>
         </div>
 
-        {/* Tags */}
         {!q && tags && tags.length > 0 && (
           <div className="mb-10">
             <h2 className="text-sm font-bold text-white/40 uppercase tracking-widest mb-4">
@@ -75,7 +74,9 @@ export default async function ExplorePage({ searchParams }: Props) {
         {/* Posts Grid */}
         {posts && posts.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-white/30 text-sm">No posts found for "{q}"</p>
+            <p className="text-white/30 text-sm">
+              No posts found for `&quot;`{q}`&quot;`
+            </p>
             <Link
               href="/explore"
               className="text-blue-400 text-sm hover:underline mt-2 block"
@@ -93,9 +94,11 @@ export default async function ExplorePage({ searchParams }: Props) {
               className="group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition"
             >
               {post.cover_image && (
-                <img
+                <Image
                   src={post.cover_image}
                   alt={post.title}
+                  width={600}
+                  height={400}
                   className="w-full h-48 object-cover"
                 />
               )}
@@ -107,7 +110,7 @@ export default async function ExplorePage({ searchParams }: Props) {
                   {post.excerpt}
                 </p>
                 <div className="flex items-center gap-2 mt-3">
-                  <img
+                  <Image
                     src={
                       (
                         post.author as {
@@ -118,6 +121,8 @@ export default async function ExplorePage({ searchParams }: Props) {
                       `https://i.pravatar.cc/24?u=${(post.author as { username: string })?.username}`
                     }
                     alt="author"
+                    width={24}
+                    height={24}
                     className="w-6 h-6 rounded-full"
                   />
                   <span className="text-xs text-white/40">

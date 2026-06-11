@@ -23,7 +23,7 @@ export default function LogoutButton({ className }: LogoutButtonProps) {
       onClick={handleLogout}
       className={
         className ??
-        "flex items-center gap-3 px-3 py-2.5 cursor-pointer rounded-xl text-sm text-white/30 hover:text-white hover:bg-white/5 transition w-full"
+        "flex items-center justify-center gap-1 py-2.5 cursor-pointer bg-red-500 rounded-xl text-sm text-white font-bold hover:bg-white/5 hover:border-2 hover:border-red-500 transition w-full"
       }
     >
       <LogOut strokeWidth={1.5} /> Logout

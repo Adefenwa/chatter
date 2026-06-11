@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
+import { Bookmark, MessageCircleMore, MessageSquareShare } from "lucide-react";
 
 type Props = {
   postId: string;
@@ -62,20 +63,26 @@ export default function ReaderActions({ postId, initialLikeCount }: Props) {
         onClick={handleLike}
         className="flex flex-col items-center gap-1 text-white/30 hover:text-red-400 transition"
       >
-        <span className={`text-xl ${liked ? "text-red-400" : ""}`}>♥</span>
+        <span
+          className={`text-xl cursor-pointer ${liked ? "text-red-400" : ""}`}
+        >
+          ♥
+        </span>
         <span className="text-xs">{likeCount}</span>
       </button>
       <button className="text-white/30 hover:text-white/70 transition">
-        <span className="text-xl">💬</span>
+        <span className="text-xl cursor-pointer">
+          <MessageCircleMore />
+        </span>
       </button>
       <button
         onClick={handleBookmark}
-        className={`text-xl transition ${bookmarked ? "text-blue-400" : "text-white/30 hover:text-blue-400"}`}
+        className={`text-xl transition cursor-pointer ${bookmarked ? "text-blue-400" : "text-white/30 hover:text-blue-400"}`}
       >
-        🔖
+        <Bookmark />
       </button>
-      <button className="text-white/30 hover:text-white/70 transition text-xl">
-        ↗️
+      <button className="text-white/30 hover:text-white/70 transition text-xl cursor-pointer">
+        <MessageSquareShare />
       </button>
     </div>
   );

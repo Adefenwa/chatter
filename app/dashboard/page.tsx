@@ -2,8 +2,7 @@ import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import AnalyticsChart from "@/components/shared/AnalyticsChart";
-import { Bell, CircleQuestionMark, Plus } from "lucide-react";
-import LogoutButton from "@/components/shared/LogoutButton";
+import { Plus } from "lucide-react";
 import Image from "next/image";
 
 export default async function DashboardPage() {
@@ -123,25 +122,24 @@ export default async function DashboardPage() {
       {/* Left Sidebar */}
       <aside className="hidden lg:flex flex-col w-52 shrink-0 bg-[#0f172a] border-r border-white/10 p-4 min-h-screen sticky top-0">
         <div className="mb-6">
-          <p className="text-lg font-bold text-white">Chatter</p>
-          <p className="text-xs text-white/30">CREATOR STUDIO</p>
+          <p className="text-lg font-bold text-white">CREATOR STUDIO</p>
         </div>
-
-        <button className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 rounded-lg mb-6 transition">
+        <Link
+          href="/write"
+          className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 rounded-lg mb-6 cursor-pointer transition"
+        >
           <Plus strokeWidth={1.5} /> New Post
-        </button>
+        </Link>
 
         <div className="mt-auto flex flex-col gap-1">
-          <button className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-white/30 hover:text-white hover:bg-white/5 transition">
-            <CircleQuestionMark strokeWidth={1.5} /> Help
-          </button>
-          <LogoutButton className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-white/30 hover:text-white hover:bg-white/5 transition" />
           <div className="flex items-center gap-3 px-3 py-3 mt-2 border-t border-white/10">
             <Image
               src={
                 profile?.avatar_url || `https://i.pravatar.cc/32?u=${user.id}`
               }
               alt={profile?.full_name}
+              width={32}
+              height={32}
               className="w-8 h-8 rounded-full"
             />
             <div>
@@ -167,16 +165,6 @@ export default async function DashboardPage() {
               type="text"
               placeholder="Search analytics..."
               className="hidden md:block bg-white/5 border border-white/10 text-white text-sm placeholder-white/20 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <button className="text-white/50 hover:text-white transition">
-              <Bell strokeWidth={1.5} />
-            </button>
-            <Image
-              src={
-                profile?.avatar_url || `https://i.pravatar.cc/32?u=${user.id}`
-              }
-              alt="avatar"
-              className="w-8 h-8 rounded-full"
             />
           </div>
         </div>
@@ -230,7 +218,7 @@ export default async function DashboardPage() {
               Top Performing Posts
             </h2>
             <Link
-              href="/write"
+              href="/explore"
               className="text-xs text-blue-400 hover:text-blue-300 transition"
             >
               View All Posts
@@ -270,6 +258,8 @@ export default async function DashboardPage() {
                     <Image
                       src={post.cover_image}
                       alt={post.title}
+                      width={40}
+                      height={40}
                       className="w-10 h-10 rounded-lg object-cover shrink-0"
                     />
                   )}
@@ -289,25 +279,6 @@ export default async function DashboardPage() {
           </div>
         </div>
       </main>
-
-      {/* Mobile Bottom Nav */}
-      {/* <nav className="fixed bottom-0 left-0 right-0 lg:hidden bg-[#0f172a] border-t border-white/10 flex items-center justify-around py-3">
-        {[
-          { label: "Home", icon: "🏠", href: "/" },
-          { label: "Search", icon: "🔍", href: "/explore" },
-          { label: "Write", icon: "➕", href: "/write" },
-          { label: "Profile", icon: "👤", href: `/${profile?.username}` },
-        ].map((item) => (
-          <Link
-            key={item.label}
-            href={item.href}
-            className="flex flex-col items-center gap-0.5 text-white/40 hover:text-white transition"
-          >
-            <span className="text-lg">{item.icon}</span>
-            <span className="text-xs">{item.label}</span>
-          </Link>
-        ))}
-      </nav> */}
     </div>
   );
 }

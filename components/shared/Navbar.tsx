@@ -1,16 +1,8 @@
 import { createClient } from "@/lib/supabase/server";
 import Link from "next/link";
-import {
-  NotebookPen,
-  Bell,
-  TrendingUp,
-  House,
-  User,
-  Tag,
-  Book,
-  ListFilter,
-} from "lucide-react";
+import { NotebookPen } from "lucide-react";
 import LogoutButton from "@/components/shared/LogoutButton";
+import Image from "next/image";
 
 export default async function Navbar() {
   const supabase = await createClient();
@@ -74,20 +66,22 @@ export default async function Navbar() {
             <>
               <Link
                 href="/write"
-                className="flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-1.5 rounded-full transition"
+                className="flex items-center gap-1.5 bg-blue-600 text-white text-sm font-bold px-4 py-2.5 hover:bg-white/5 hover:border-2 hover:border-blue-600 rounded-full transition"
               >
                 <NotebookPen strokeWidth={1.5} /> Write
               </Link>
-              <button className="text-white/70 hover:text-white transition">
-                <Bell strokeWidth={1.5} />
-              </button>
-              <Link href={`/${profile?.username}`}>
-                <img
+
+              <Link
+                href={profile?.username ? `/${profile.username}` : "/dashboard"}
+              >
+                <Image
                   src={
                     profile?.avatar_url ||
                     `https://i.pravatar.cc/32?u=${user.id}`
                   }
                   alt={profile?.full_name || "Profile"}
+                  width={32}
+                  height={32}
                   className="w-22 rounded-full object-cover cursor-pointer hover:ring-2 hover:ring-blue-500 transition"
                 />
               </Link>
