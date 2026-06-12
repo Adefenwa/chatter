@@ -8,7 +8,7 @@ export default async function HomePage() {
   return (
     <div className="min-h-screen bg-[#0f172a] text-white">
       <div className="max-w-7xl mx-auto px-4 py-6 flex gap-6">
-        <aside className="hidden lg:flex flex-col gap-1 w-52 shrink-0">
+        <aside className="hidden lg:flex flex-col gap-1 w-52 shrink-0 sticky top-20 h-fit">
           {[
             { label: "Home", href: "/", icon: <House strokeWidth={1.5} /> },
             {
@@ -64,7 +64,7 @@ export default async function HomePage() {
           </Suspense>
         </main>
 
-        <aside className="hidden lg:block w-56 shrink-0">
+        <aside className="hidden lg:block w-56 shrink-0 sticky top-20 h-fit">
           <div className="bg-white/5 border border-white/10 rounded-2xl p-4">
             <h3 className="text-xs font-bold text-white/50 uppercase tracking-widest mb-3">
               Trending Topics
